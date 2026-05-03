@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuizForge — Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #e8e4dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Jost', sans-serif;
+    padding: 1.5rem;
+  }
+
+  .card {
+    display: flex;
+    width: 100%;
+    max-width: 820px;
+    min-height: 480px;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.14);
+    animation: fadeUp 0.6s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- LEFT PANEL ---- */
+  .left {
+    background: #2d5a3d;
+    width: 42%;
+    padding: 2.5rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative circles */
+  .left::before {
+    content: '';
+    position: absolute;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    top: -60px; right: -70px;
+  }
+  .left::after {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    bottom: 30px; right: 20px;
+  }
+
+  .left-top { position: relative; z-index: 1; }
+  .welcome-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .app-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .left-bottom {
+    position: relative;
+    z-index: 1;
+    border-left: 2px solid rgba(255,255,255,0.25);
+    padding-left: 1rem;
+  }
+  .left-bottom p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ---- RIGHT PANEL ---- */
+  .right {
+    background: #fff;
+    flex: 1;
+    padding: 3rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .right h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+  .right .subtitle {
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .field { margin-bottom: 1.25rem; }
+  .field label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .field input {
+    width: 100%;
+    border: none;
+    background: #f2efea;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    color: #1a1a1a;
+    outline: none;
+    transition: box-shadow 0.2s, background 0.2s;
+  }
+  .field input::placeholder { color: #bbb; }
+  .field input:focus {
+    background: #ede9e2;
+    box-shadow: 0 0 0 2px rgba(45,90,61,0.25);
+  }
+
+  .btn-login {
+    width: 100%;
+    background: #2d5a3d;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 0.25rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-login:hover { background: #234832; }
+  .btn-login:active { transform: scale(0.985); }
+
+  .signup-row {
+    margin-top: 1.4rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #999;
+  }
+  .signup-row a {
+    color: #2d5a3d;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .signup-row a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .left { display: none; }
+    .right { padding: 2.5rem 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <!-- LEFT -->
+  <div class="left">
+    <div class="left-top">
+      <div class="welcome-label">Welcome to</div>
+      <div class="app-name">QuizForge</div>
+    </div>
+    <div class="left-bottom">
+      <p>Sign in to access your personal dashboard and pick up right where you left off.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <h2>Sign in</h2>
+    <p class="subtitle">Enter your credentials to continue.</p>
+
+    <div class="field">
+      <label>Email Address</label>
+      <input type="email" placeholder="Enter your email address">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+
+    <button class="btn-login">Login</button>
+
+    <div class="signup-row">
+      Don't have an account? <a href="#">Create new account</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
